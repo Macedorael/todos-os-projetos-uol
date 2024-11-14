@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: grupo4f-app
+    ports:
+      - "3000:3000"
+  
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    container_name: grupo4f-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app

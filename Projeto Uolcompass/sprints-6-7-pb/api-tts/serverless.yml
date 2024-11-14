@@ -1,0 +1,57 @@
+service: api-tts-bot  # Nome do serviço
+
+plugins:
+  - serverless-dotenv-plugin  # Carregar o .env automaticamente
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: us-east-1
+  stage: v1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+      Resource: arn:aws:dynamodb:us-east-1:${env:ACCOUNT_ID}:table/${env:DYNAMODB_TABLE}
+    - Effect: Allow
+      Action:
+        - polly:SynthesizeSpeech
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
+      Resource: arn:aws:s3:::${env:S3_BUCKET}/*
+
+  environment:
+    ACCOUNT_ID: ${env:ACCOUNT_ID}
+    DYNAMODB_TABLE: ${env:DYNAMODB_TABLE}
+    S3_BUCKET: ${env:S3_BUCKET}
+
+functions:
+  ttsFunction:
+    handler: handler.lambda_handler
+    events:
+      - http:
+          path: /tts
+          method: post
+
+resources:
+  Resources:
+    S3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${env:S3_BUCKET}
+
+    TextToSpeechTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${env:DYNAMODB_TABLE}
+        AttributeDefinitions:
+          - AttributeName: unique_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: unique_id
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST

@@ -1,0 +1,265 @@
+
+
+/* estilo geral*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+
+body{
+    background-image: url("/assets/images/FundoCeu.jpg");
+    height:100vh ;
+
+}
+
+.interface{
+    max-width: 1280px;
+    margin-top: 10% auto;
+    text-align: center;
+
+}
+
+
+
+.flex {
+    display: center;
+}
+
+/* estilo cabeçalho*/
+
+
+
+h2.titulo{
+    color:#fff;
+    font-size: 38px;
+    text-align:center;
+}
+
+h2.titulo span{
+    color:#1d03c89b;
+}
+
+
+/* logo*/
+.header
+{
+    
+    left: 0;
+    padding: 10px 100px;
+    background-color:rgba(255, 255, 255, 0.465);
+    justify-content: space-between;
+    align-items: center;
+    z-index:100 ;
+    display: flex;
+   
+}
+
+/*barra do header*/
+.navbar a
+{
+    font-size: 18px;
+    color:black;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+
+}
+
+
+
+.btn-contato button{
+    padding: 10px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: #1d03c89b;
+    border:0;
+    border-radius: 30px;
+    cursor:pointer;
+    transition: .2s;
+
+
+}
+
+.btn-contato button:hover{
+    box-shadow: 0px 0px 8px #1d03c89b;
+    transform: scale(1.05);
+}
+
+/* estilo do topo do site*/
+
+section.topo-do-site{
+    padding: 20px 4%;
+}
+
+section.topo-do-site .flex{
+    align-items: center;
+    justify-content: center;
+    gap:90px;
+}
+
+.topo-do-site h1{
+    color: #fff;
+    font-size:42px ;
+    line-height: 40px;
+}
+
+.topo-do-site h1 span{
+    color:#1d03c89b;
+}
+
+.topo-do-site .txt-topo-site p {
+    color:#fff;
+    margin: 40px 0;
+    position:center;
+    margin-left: auto;
+    margin-right: auto;
+
+   
+}
+
+/*estilo da previsão */
+
+section.previsao-container{
+    padding: 0px 4%;
+}
+
+section.previsao-container .flex{
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    
+   
+    
+} 
+
+.previsao-container .previsao-box{
+    color: #fff;
+    
+    border-radius: 20px;
+    margin-top: 45px;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.previsao-container .previsao-box i{
+    color:#1d03c89b;
+    font-size: 70px;
+}
+
+.previsao-container .previsao-box h3{
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+.previsao-container .previsao-box:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 8px #ffffff71;
+    
+}
+
+
+
+.btn:hover
+{
+    background-color: gray;
+}
+
+/*estilo do modal*/
+.janela-modal
+{
+    width: 110vw;
+    height: 110vh;
+    position:relative;
+    padding-top: 50px ;
+    top: 0%;
+    left: 0%;
+    background-color: rgba(12, 12, 21, 0.816);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 10px;
+}
+
+/*conteudo do modal*/
+.modal 
+{
+    min-width: 450px;
+    min-height: 200px;
+    background-color: rgba(255, 255, 255, 0.382);
+    backdrop-filter: blur(10px);
+    padding: 50px;
+    border-radius: 20px;
+    flex-direction: row;
+}
+
+/* estilo botão 'X'*/
+.fechar
+{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border:0;
+    background-color: black;
+    color:white;
+    font-size: 20px;
+    cursor: pointer;
+}
+.janela-modal.abrir
+{
+    display:flex;
+}
+
+/* animação modal*/
+@keyframes abrirmodal {
+    from{
+        opacity: 0;
+        transform: translate3d(0,-20px,-5)
+    }
+    to{
+        opacity: 1;
+        transform: translate3d(0,0,0);  
+
+    }
+}
+
+.abrir .modal
+{
+    animation: abrirmodal 0.2s;
+}
+
+
+
+
+/* resolução da tela da aplicação*/
+@media screen and (max-width: 1020px)
+{
+    .flex{
+        flex-direction:column-reverse
+    }
+
+    .btn-contato{
+        display: none;
+    }
+
+    section.topo-do-site{
+        padding: 20px 8%;
+    }
+    .topo-do-site h1{
+        font-size: 30px;
+    }
+
+    .txt-topo-site p {
+        text-align:inherit;
+        line-height: 35px;
+    }    
+
+
+}
+
+
